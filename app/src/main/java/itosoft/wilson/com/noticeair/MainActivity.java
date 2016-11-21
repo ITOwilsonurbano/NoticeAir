@@ -12,7 +12,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,12 +34,12 @@ public class MainActivity extends AppCompatActivity {
 
         String url = "http://api.inder.gov.co:8080/uploads/noticias/20161115162306582b7cba3e5ad.jpg";
 
-        Glide.with(this)
-                .load(url)
-                .centerCrop()
-                .crossFade()
-                .thumbnail(0.5f)
-                .into(imageView);
+//        Glide.with(this)
+//                .load(url)
+//                .centerCrop()
+//                .crossFade()
+//                .thumbnail(0.5f)
+//                .into(imageView);
 
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, "http://api.inder.gov.co/api/v1/noticias",
@@ -58,8 +57,12 @@ public class MainActivity extends AppCompatActivity {
                                 String imagen_url = item.getString("imagen_url");
                                 String texto = item.getString("texto");
 
-
-//                                    Glide.with(Context).load(imagen_url).centerCrop().crossFade().thumbnail(0.5f).into(imageView);
+//                                Glide.with(this)
+//                                        .load(imagen_url)
+//                                        .centerCrop()
+//                                        .crossFade()
+//                                        .thumbnail(0.5f)
+//                                        .into(imageView);
 
                                 textView.append(imagen_url + "\n" + "\n" + texto + "\n" + "\n" + "\n" + "\n");
                             }
