@@ -12,6 +12,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,7 +22,10 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textView;
     RequestQueue requestQueue;
+//    ImageView items;
     private ImageView imageView;
+//    private ImageView items;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.textview2);
         requestQueue = Volley.newRequestQueue(this);
         imageView = (ImageView) findViewById(R.id.imageView);
+//        imageView = (ImageView) findViewById(R.id.items);
 
-        String url = "http://api.inder.gov.co:8080/uploads/noticias/20161115162306582b7cba3e5ad.jpg";
-
+//        String url = "http://api.inder.gov.co:8080/uploads/noticias/20161115162306582b7cba3e5ad.jpg";
+//
 //        Glide.with(this)
 //                .load(url)
 //                .centerCrop()
@@ -57,14 +62,15 @@ public class MainActivity extends AppCompatActivity {
                                 String imagen_url = item.getString("imagen_url");
                                 String texto = item.getString("texto");
 
-//                                Glide.with(this)
-//                                        .load(imagen_url)
-//                                        .centerCrop()
-//                                        .crossFade()
-//                                        .thumbnail(0.5f)
-//                                        .into(imageView);
+                                Glide.with(getBaseContext())
+                                        .load(imagen_url)
+                                        .centerCrop()
+                                        .crossFade()
+                                        .thumbnail(0.5f)
+                                        .into(imageView);
 
                                 textView.append(imagen_url + "\n" + "\n" + texto + "\n" + "\n" + "\n" + "\n");
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
